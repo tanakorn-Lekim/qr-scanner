@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #1f2933;
+  font-family: Arial, sans-serif;
+}
+
+.app-shell {
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+h1 {
+  margin: 6px 0 16px;
+  font-size: 24px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.panel,
+.menu-card,
+.message {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 14px;
+  padding: 16px;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.menu-card {
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 96px;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-card strong {
+  font-size: 24px;
+}
+
+.menu-card span,
+.muted {
+  color: #687582;
+}
+
+.transfer {
+  border-left: 6px solid #f0ad4e;
+}
+
+.receive {
+  border-left: 6px solid #198754;
+}
+
+#reader {
+  background: #000;
+  border-radius: 8px;
+  margin: 0 auto 12px;
+  max-width: 320px;
+  overflow: hidden;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+input,
+select,
+button {
+  border-radius: 8px;
+  font-size: 16px;
+  min-height: 44px;
+  width: 100%;
+}
+
+input,
+select {
+  border: 1px solid #cbd5df;
+  padding: 10px 12px;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+.primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.warning {
+  background: #f0ad4e;
+  color: #1f2933;
+}
+
+.success {
+  background: #198754;
+  color: #fff;
+}
+
+.ghost {
+  background: #e9eef3;
+  color: #1f2933;
+  margin-bottom: 8px;
+  width: auto;
+}
+
+.info-row {
+  border-bottom: 1px solid #edf1f5;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.pending-item {
+  border: 1px solid #dde5ee;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 12px;
+}
+
+.pending-item input {
+  margin-right: 8px;
+  min-height: auto;
+  width: auto;
+}
+
+.message {
+  bottom: 12px;
+  left: 16px;
+  margin: 0;
+  position: fixed;
+  right: 16px;
+  z-index: 10;
+}
+
+.message.error {
+  border-left: 6px solid #dc3545;
+}
+
+.message.ok {
+  border-left: 6px solid #198754;
+}
+
+.hidden {
+  display: none;
+}
