@@ -14,13 +14,6 @@
     <section id="mainMenu" class="page active">
       <h1>STORE APP</h1>
 
-      <section class="panel">
-        <h2>QR Scanner</h2>
-        <div id="reader"></div>
-        <button id="cameraBtn" class="primary" onclick="startScanner()">เปิดกล้อง</button>
-        <p id="cameraStatus" class="muted">ยังไม่ได้เปิดกล้อง</p>
-      </section>
-
       <section class="menu-grid">
         <button class="menu-card transfer" onclick="openTransfer()">
           <strong>TRANSFER</strong>
@@ -37,6 +30,13 @@
     <section id="transferPage" class="page">
       <button class="ghost" onclick="backToMenu()">BACK</button>
       <h1>TRANSFER</h1>
+
+      <section class="panel">
+        <h2>QR Scanner</h2>
+        <div id="reader"></div>
+        <button id="cameraBtn" class="primary" onclick="startScanner()">เปิดกล้อง</button>
+        <p id="cameraStatus" class="muted">เลือกเมนูแล้วเปิดกล้องเพื่อสแกน</p>
+      </section>
 
       <section class="panel">
         <label for="transferTagId">TAG ID</label>
@@ -73,6 +73,13 @@
     <section id="receivePage" class="page">
       <button class="ghost" onclick="backToMenu()">BACK</button>
       <h1>RECEIVE</h1>
+
+      <section class="panel">
+        <h2>QR Scanner</h2>
+        <div id="receiveReader"></div>
+        <button id="receiveCameraBtn" class="primary" onclick="startScanner()">เปิดกล้อง</button>
+        <p id="receiveCameraStatus" class="muted">เลือกเมนูแล้วเปิดกล้องเพื่อสแกน</p>
+      </section>
 
       <section class="panel">
         <label for="receiveTagId">TAG ID</label>
