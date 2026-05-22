@@ -81,22 +81,42 @@ function showPage(pageId) {
 
 function openTransfer() {
   currentMode = "TRANSFER";
+  stopScanner();
   showPage("transferPage");
 }
 
 function openReceive() {
   currentMode = "RECEIVE";
+  stopScanner();
   showPage("receivePage");
 }
 
 function backToMenu() {
   currentMode = "";
+  stopScanner();
   showPage("mainMenu");
 }
 
 function startScanner() {
+  const readerId =
+    currentMode === "RECEIVE"
+      ? "receiveReader"
+      : "reader";
+
   const cameraStatus =
-    document.getElementById("cameraStatus");
+    currentMode === "RECEIVE"
+      ? document.getElementById("receiveCameraStatus")
+      : document.getElementById("cameraStatus");
+
+  const cameraBtn =
+    currentMode === "RECEIVE"
+      ? document.getElementById("receiveCameraBtn")
+      : document.getElementById("cameraBtn");
+
+  if (!currentMode) {
+    showMessage("กรุณาเลือก TRANSFER หรือ RECEIVE ก่อนเปิดกล้อง", "error");
+    return;
+  }
 
   if (scanner) {
     cameraStatus.innerText = "กล้องพร้อมใช้งานแล้ว";
@@ -104,7 +124,7 @@ function startScanner() {
   }
 
   scanner =
-    new Html5Qrcode("reader");
+    new Html5Qrcode(readerId);
 
   cameraStatus.innerText =
     "กำลังเปิดกล้อง...";
@@ -127,13 +147,39 @@ function startScanner() {
     })
     .then(() => {
       cameraStatus.innerText = "กล้องพร้อมใช้งานแล้ว";
-      document.getElementById("cameraBtn").disabled = true;
+      cameraBtn.disabled = true;
     })
     .catch(err => {
       scanner = null;
       cameraStatus.innerText = "เปิดกล้องไม่ได้: " + err;
       showMessage("เปิดกล้องไม่ได้: " + err, "error");
     });
+}
+
+function stopScanner() {
+  const activeScanner =
+    scanner;
+
+  scanner =
+    null;
+
+  const transferBtn =
+    document.getElementById("cameraBtn");
+
+  const receiveBtn =
+    document.getElementById("receiveCameraBtn");
+
+  if (transferBtn) transferBtn.disabled = false;
+  if (receiveBtn) receiveBtn.disabled = false;
+
+  if (!activeScanner) {
+    return;
+  }
+
+  activeScanner
+    .stop()
+    .then(() => activeScanner.clear())
+    .catch(() => {});
 }
 
 function onScanSuccess(decodedText) {
