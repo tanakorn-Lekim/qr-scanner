@@ -76,7 +76,8 @@ h2 {
   border-left: 6px solid #198754;
 }
 
-#reader {
+#reader,
+#receiveReader {
   background: #000;
   border-radius: 8px;
   margin: 0 auto 12px;
